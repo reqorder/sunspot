@@ -56,7 +56,7 @@ namespace :sunspot do
       begin
         require 'progress_bar'
         total_documents = sunspot_models.map { | m | m.count }.sum
-        reindex_options[:progress_bar] = ProgressBar.new(total_documents)
+        reindex_options[:progress_bar] = ProgressBar.create(total_documents)
       rescue LoadError => e
         $stdout.puts "Skipping progress bar: for progress reporting, add gem 'progress_bar' to your Gemfile"
       rescue Exception => e
